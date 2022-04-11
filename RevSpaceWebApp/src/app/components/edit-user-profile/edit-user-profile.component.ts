@@ -12,6 +12,31 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./edit-user-profile.component.css']
 })
 export class EditUserProfileComponent implements OnInit {
+  url: any; //Angular 11, for stricter type
+msg = "";
+
+//selectFile(event) { //Angular 8
+selectFile(event: any) { //Angular 11, for stricter type
+  if(!event.target.files[0] || event.target.files[0].length == 0) {
+    this.msg = 'You must select an image';
+    return;
+  }
+  
+  var mimeType = event.target.files[0].type;
+  
+  if (mimeType.match(/image\/*/) == null) {
+    this.msg = "Only images are supported";
+    return;
+  }
+  
+  var reader = new FileReader();
+  reader.readAsDataURL(event.target.files[0]);
+  
+  reader.onload = (_event) => {
+    this.msg = "";
+    this.url = reader.result; 
+  }
+}
 
   constructor(private userService: UserService, private loginService:LoginService, private router: Router) { 
 
@@ -22,6 +47,10 @@ export class EditUserProfileComponent implements OnInit {
   }
 
   //Variable declarations 
+
+    //Editing variables
+    isViewable = true;
+    isEditable = false;
 
   //Logged in user information
   currentUser: User;
@@ -34,6 +63,7 @@ export class EditUserProfileComponent implements OnInit {
   locationInput: string = "";
   aboutMeInput:string = "";
   email:string;
+  profileImage: string;
 
   //Used to store the date values
   //Initialized to the current date, but overwritten when the user's data is loaded
@@ -51,6 +81,11 @@ export class EditUserProfileComponent implements OnInit {
   //Used to notify the user if something went wrong when updating their profile
   updateFailWarning: Boolean = false;
 
+  //Toggle on and off edit
+  toggleEdit() {
+    this.isEditable = !this.isEditable;
+    this.isViewable = !this.isViewable;
+  }
 
   //Converts Date and String data types from the date input tags into unix time (in ms)
   //We need to handle both date and string value types here:
@@ -90,6 +125,7 @@ export class EditUserProfileComponent implements OnInit {
     this.locationInput = this.currentUser.location;
     this.aboutMeInput = this.currentUser.aboutMe;
     this.email = this.currentUser.email;
+    this.profileImage = this.currentUser.profileImage;
 
 
     let joinUnixDate = this.currentUser.revatureJoinDate;
@@ -167,7 +203,8 @@ export class EditUserProfileComponent implements OnInit {
       this.githubUsernameInput,
       this.titleInput,
       this.locationInput,
-      this.aboutMeInput
+      this.aboutMeInput,
+      this.profileImage,
       );
 
 

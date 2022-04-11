@@ -1,11 +1,31 @@
 
 <div style="margin: 2% 10%;border-left: #474C55 solid 3px;border-right: #474C55 solid 3px;">
+       <div class="wrapper">
+              <img [src]="url" *ngIf="url">
+          </div>
+       <!-- <form> -->
+              <!-- <textarea rows="" column="" name ="" value=""  (click)="expand()" autocomplete="on" accept="image/*">
+              </textarea>
+              
+  
+          <div *ngIf="expandThis">
+              <div *ngIf="show">
+                  <img class="fitImg" [src]="urlLink">
+              </div>
+            
+                  <!-- CODE FOR IMGBB -->
+                  <!-- <input type="file" style="display:none" (input)="onInput($event)" #fileInput autocomplete="false">
+                  <button  type="button" (click)="fileInput.click()">
+                          <img class="image" alt="photo" src={{user.profileImage}}/> -->
+                  <!-- </button> --> 
+       <!-- </form> -->
        <div style="background-color: #FCB414;margin: 1% 5% 1% 5%;border-radius: 10px;color: #474C55;">
               <h1 style="padding: 3% 3% 3% 2%;"><span>{{user.firstName}}</span> <br> <span>{{user.lastName}}</span></h1>
        </div>
        <hr style="border-top: 1px dashed black;margin: 0% 5%;">
        <div style="margin: 1% 5%;color:white;">
               <div class="row align-items-start">
+                     
                      <div class="col" >
                             <div style="background-color: #F26925; padding: 3%;border-radius: 10px;">
                                    <h3>Revature Information</h3>

@@ -1,6 +1,18 @@
 
 <div id="edit-user-profile-div" style="margin: 2% 10%;border-left: #474C55 solid 3px;border-right: #474C55 solid 3px;">
-    <h1 style="text-align: center;">Edit your profile</h1>
+    <!-- <h1 style="text-align: center;">Edit your profile</h1> -->
+
+    <button class="btn btn-dark" id="edit_profile" (click)="toggleEdit()"><i class="fa fa-pencil"></i></button>
+    <div align="center" style="border-radius: 3rem">
+        <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+        <!-- <div><img [src]="url" *ngIf="url" class="rounded-circle" width="350" type="file" (change)="selectFile($event)"></div>  -->
+    </div>
+
+    <div class="wrapper">
+        <img [src]="url" *ngIf="url">
+        <input type="file" class="profile_pic" (change)="selectFile($event)">
+    </div>
+
     <div style="margin: 2% 5% 2% 5%;">
         <div class="row align-items-start" style="background-color: #FCB414;border-radius: 10px;padding: 2%;margin: 2% 0%;">
             <div class="col">

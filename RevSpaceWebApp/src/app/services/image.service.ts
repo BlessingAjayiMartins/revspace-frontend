@@ -24,7 +24,41 @@ export class ImageService {
    .pipe(map((response)=>response['data']['url']));      
  }
  
-  
+  // CODE FOR UDATING PROFILE IMAGE
+  // editProfileImage(file: File): Observable<string> {
+  //   const formData = new FormData();
+  //   formData.append('image', file);
+  //   return this.http.post
+  // }
 
+  ///KAMI ADDED METHODS TO UPLOAD THAT CONNECT WTIH SPRING
+
+  //imageUploadAction() {    
+   // const imageFormData = new FormData();
+   // imageFormData.append('image', this.uploadedImage, this.uploadedImage.name);
+  
+  
+   // this.httpClient.post('http://localhost:9001/image/upload', imageFormData, { observe: 'response' })
+    //  .subscribe((response) => {
+    //    if (response.status === 200) { 
+    //      this.postResponse = response;                
+    //      this.successResponse = this.postResponse.body.message;
+     //   } else {
+     ////     this.successResponse = 'Image not uploaded due to some error!';
+     //   }
+   //   }
+   //   );
+   // }
+  
+ // viewImage() {
+ // this.httpClient.get('http://localhost:9001/get/info' + this.image)
+ // .subscribe(
+  //  res => {
+  //    this.postResponse = res;          
+  //    this.dbImage = 'data:image/jpeg;base64,' + this.postResponse.image;
+  //  }
+ // );
+//  }
+ // }
 
 }
